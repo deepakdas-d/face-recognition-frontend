@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getUsers, deleteUser } from '../services/api';
+// import { getUsers, deleteUser } from '../services/api';
+import { getUsers } from '../services/api';
 import { Link } from 'react-router-dom';
 
 function UserList() {
@@ -117,12 +118,12 @@ function UserList() {
                           >
                             <i className="bi bi-eye"></i><span className="d-none d-sm-inline ms-1">View</span>
                           </Link>
-                          <button
+                          {/* <button
                             className="btn btn-sm btn-outline-danger px-3"
                             onClick={() => handleDelete(user.id, user.name)}
                           >
                             <i className="bi bi-trash"></i><span className="d-none d-sm-inline ms-1">Del</span>
-                          </button>
+                          </button> */}
                         </div>
                       </td>
                     </tr>
