@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://10.214.184.185:8000';
-
+// Get API URL from env, or detect if we're on a local network explicitly
+// Fallback to exactly what was there for backwards compatibility if not specified
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://10.214.184.185:8000';
+ 
 const api = axios.create({
   baseURL: API_BASE_URL,
 });
@@ -29,11 +31,7 @@ export const recognizeFace = async (file) => {
   const formData = new FormData();
   formData.append('file', file);
 
-  const response = await api.post('/recognize/', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
+const response = await api.post('/recognize/', formData);
   return response.data;
 };
 
